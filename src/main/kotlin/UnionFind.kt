@@ -1,3 +1,8 @@
+/**
+ * partially here:
+ * Algoritmus: a cél az élek eliminálása oly módon, hogy (1) a csúcsokat összevonjuk, amibe a metszet halmazrendszer kerül.
+ * (2) a lehető legkisebb elemszámú csúcs legyen a végeredmény.
+ */
 class UnionFind(n: Int) {
     val parent = IntArray(n) { it }
 

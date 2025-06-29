@@ -4,6 +4,10 @@ data class Interval(
     val startInclusive: Boolean,
     val endInclusive: Boolean
 ) {
+    /**
+     * Két csúcs akkor lesz összekötve, ha a metszetük nem üres.
+     * A metszet lehet egyetlen pont is.
+     */
     fun overlaps(other: Interval): Boolean {
         if (end < other.start || other.end < start) return false
         if (end == other.start)
@@ -13,6 +17,11 @@ data class Interval(
         return true
     }
 
+    /**
+     * partially here:
+     * Algoritmus: a cél az élek eliminálása oly módon, hogy (1) a csúcsokat összevonjuk, amibe a metszet halmazrendszer kerül.
+     * (2) a lehető legkisebb elemszámú csúcs legyen a végeredmény.
+     */
     fun merge(other: Interval): Interval {
         if (!overlaps(other)) {
             throw IllegalArgumentException("Intervals don't overlap")

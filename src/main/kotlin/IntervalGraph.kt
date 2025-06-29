@@ -2,6 +2,12 @@ class IntervalGraph(private val intervals: MutableList<Interval>) {
     private val n = intervals.size
     private val edges = mutableListOf<Edge>()
 
+    /**
+     * partially here:
+     * Az így felcimkézett gráfon csináljunk egy minimális feszítőfát,
+     * (Kruskal) majd mindig a fa legkisebb cimkéjű élei sorrendjében keresztül hajtsuk végre az összevonásokat.
+     * Persze a fából könnyen erdő lehet...
+     */
     fun buildEdges(): MutableList<Edge> {
         for (i in 0 until n) {
             for (j in i + 1 until n) {
@@ -12,6 +18,17 @@ class IntervalGraph(private val intervals: MutableList<Interval>) {
         }
         return edges
     }
+
+    /**
+     * minden élre tegyünk egy cimkét, amely leírja, hogyha az adott élt elimináljuk, az eredeti élszám és a
+     * redukált gráf élszáma különbség mekkora. Nyilván az a jó, minél kisebb ez az érték,
+     * hiszen annál több lehetőség maradhat a későbbi redukcióra.
+     *
+     * partially here:
+     * Az így felcimkézett gráfon csináljunk egy minimális feszítőfát,
+     * (Kruskal) majd mindig a fa legkisebb cimkéjű élei sorrendjében keresztül hajtsuk végre az összevonásokat.
+     * Persze a fából könnyen erdő lehet...
+     */
 
     fun labelEdges(edges: MutableList<Edge>) {
         val adjacency = Array(n) { mutableSetOf<Int>() }
