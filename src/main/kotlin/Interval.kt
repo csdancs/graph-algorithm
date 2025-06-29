@@ -9,7 +9,8 @@ data class Interval(
      * A metszet lehet egyetlen pont is.
      */
     fun overlaps(other: Interval): Boolean {
-        if (end < other.start || other.end < start) return false
+        if (end < other.start || other.end < start)
+            return false
         if (end == other.start)
             return endInclusive && other.startInclusive
         if (start == other.end)
